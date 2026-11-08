@@ -1,0 +1,166 @@
+.box-space {
+  padding: 20px;
+  margin: 20px;
+  font-size: 40px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.restaurants {
+  padding: 40px 1.5%;
+  background-color: #F5EBDD;
+  color: #01243D;
+  background-image: url("images/japan-picture.jpeg");
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: cover;
+}
+
+.restaurants > h2 {
+  padding: 0;
+}
+
+.restaurants-intro {
+  margin: 12px auto 32px;
+  text-align: center;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 20px;
+}
+
+.restaurant-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  max-width: 2000px;
+  margin: 0 auto;
+}
+
+.restaurant-card {
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 4px 16px rgba(1, 36, 61, 0.12);
+  border-radius: 10px;
+}
+
+.restaurant-card img {
+  display: block;
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+}
+
+.restaurant-info {
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.restaurant-location {
+  margin: 0 0 6px;
+  color: #547487;
+  font-family: "Montserrat", sans-serif;
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.restaurant-info h3 {
+  margin: 0 0 10px;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 26px;
+  font-style: normal;
+}
+
+.restaurant-info p:not(.restaurant-location) {
+  line-height: 1.6;
+}
+
+.map-button {
+  border: 0;
+  padding: 11px 16px;
+  background: #01243D;
+  color: white;
+  font: inherit;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+
+@media (max-width: 800px) {
+  .restaurant-gallery {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 560px) {
+  .restaurant-gallery {
+    grid-template-columns: 1fr;
+  }
+
+  .restaurant-card img {
+    height: 220px;
+  }
+}
+
+
+.rc {
+  --gap: 1.5rem;
+  display: flex;
+  align-items: center;      /* Pfeile vertikal mittig */
+  gap: 10px;                /* Abstand zwischen Pfeil und Karten */
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0;               /* das alte padding: 0 32px entfällt */
+}
+
+.rc-viewport {
+  flex: 1;                  /* nimmt den Platz zwischen den Pfeilen ein */
+  min-width: 0;             /* wichtig, sonst wird der Viewport zu breit */
+  overflow: hidden;
+}
+
+.rc-track {
+  display: flex !important;
+  gap: var(--gap);
+  transition: transform 0.6s ease;
+}
+
+/* 3 Karten pro Reihe */
+.rc-track > .restaurant-card {
+  flex: 0 0 calc((100% - 2 * var(--gap)) / 3) !important;
+  width: auto !important;
+  max-width: none !important;
+  min-width: 0;
+  margin: 0 !important;
+  box-sizing: border-box;
+}
+
+.rc-track > .restaurant-card img {
+  width: 100%;
+  display: block;
+}
+
+/* Tablet/Handy: nur 1 Karte */
+@media (max-width: 800px) {
+  .rc-track > .restaurant-card {
+    flex: 0 0 100% !important;
+  }
+}
+
+.rc-arrow {
+  position: static;         /* nicht mehr über den Karten schweben */
+  transform: none;
+  flex: 0 0 44px;           /* feste Breite, schrumpft nicht */
+  width: 44px;
+  height: 44px;
+  border: none;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  font-size: 1.1rem;
+}

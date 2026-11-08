@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Japan Blog | Alexandra Huchzermeier</title>
+    <meta name="description" content="Travel blog about Japan by Alexandra Huchzermeier.">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.1.2/css/all.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Imperial+Script&family=Tangerine:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plaster&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <meta charset="utf-8">
+  </head>
+  <body>
+    <header class="nav">
+        <a class="nav_logo" href="/">Visuals by Alexandra</a>
+
+        <ul class = "left_side">
+          <li><a class="nav__link" href="#">Home</a></li>
+          <li><a class="nav__link" href="#">About</a></li>
+          <li><a class="nav__link" href="#">Photography</a></li>
+          <input class="searchbar" type="text" placeholder="Search..">
+        </ul>
+    </header>
+
+    <div class="container">
+      <h1>Japan Blog</h1>
+      <h5>by Alexandra Huchzermeier</h5>
+
+      <div class="pond">
+        <svg class="pond-path" viewBox="0 0 1200 600" preserveAspectRatio="none">
+          <path id="route"
+            d="M 200 300
+            C 200 170, 330 110, 470 140
+            C 610 170, 650 260, 780 250
+            C 900 240, 940 130, 1030 160
+            C 1110 190, 1100 330, 1020 400
+            C 940 470, 800 470, 680 430
+            C 560 390, 480 460, 360 470
+            C 250 480, 200 400, 200 300 Z"
+            fill="none" stroke="none" />
+        </svg>
+        <!-- <canvas class="koi" width="240" height="120"></canvas> -->
+         <canvas class="koi" width="500" height="250"></canvas>
+      </div>
+    </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/MotionPathPlugin.min.js"></script>
+<script src="koi.js"></script>
+<script src="ripples.js"></script>
+
+<script>
+  // 1. Pfad-Animation (wie bisher)
+  gsap.registerPlugin(MotionPathPlugin);
+
+  const swim = gsap.to(".koi", {
+    duration: 30,
+    repeat: -1,
+    ease: "none",
+    motionPath: {
+      path: "#route",
+      align: "#route",
+      autoRotate: true,
+      alignOrigin: [0.5, 0.5],
+    },
+  });
+
+  const koiElement = document.querySelector(".koi");
+  koiElement.addEventListener("mouseenter", () => {
+    gsap.to(swim, { timeScale: 3, duration: 0.4 });
+  });
+  koiElement.addEventListener("mouseleave", () => {
+    gsap.to(swim, { timeScale: 1, duration: 1 });
+  });
+
+  // 2. Schwanz-Wackeln (Canvas)
+  const canvas = document.querySelector(".koi");
+  const ctx = canvas.getContext("2d");
+  const img = new Image();
+  img.src = "images/Koi_fish.png";
+
+  img.onload = () => {
+    const slices = 40;
+    const sliceW = img.width / slices;
+    const drawW = canvas.width / slices;
+
+    const draw = (time) => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      for (let i = 0; i < slices; i++) {
+        const t = 1 - i / slices; // bei Fisch nach links statt rechts: i / slices
+        const offset = Math.sin(time / 200 + i * 0.3) * 12 * t * t;
+
+        ctx.drawImage(
+          img,
+          i * sliceW, 0, sliceW, img.height,
+          i * drawW, 20 + offset, drawW + 1, canvas.height - 40
+        );
+      }
+      requestAnimationFrame(draw);
+    };
+    requestAnimationFrame(draw);
+  };
+</script>
+  </body>
+</html>

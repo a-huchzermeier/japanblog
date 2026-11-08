@@ -1,0 +1,28 @@
+.about-me-title {
+  margin: 0px 0px 40px 0px;
+}
+
+.about-me {
+  margin: 60px;
+}
+
+.my-intro {
+  display: flex;
+  align-items: center;
+  background-color: white;
+}
+
+.my-intro img {
+  margin: 40px;
+  border-radius: 5px;
+  height: 500px;
+  width: auto;
+}
+
+.my-intro-text {
+  margin: 40px;
+  font-size: larger;
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+
+}

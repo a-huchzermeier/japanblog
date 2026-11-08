@@ -1,0 +1,35 @@
+
+.pond {
+  position: absolute;
+  inset: 0;               /* deckt den ganzen Container ab, auch h1 und h5 */
+  z-index: 10;            /* Fisch liegt ÜBER dem Text */
+  pointer-events: none;   /* Klicks und Markieren des Textes funktionieren weiter */
+}
+
+.pond-path {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.koi {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 150px;
+  pointer-events: auto;   /* nur der Fisch reagiert auf die Maus (Hover) */
+  width: 250px;     /* vorher 120px, jetzt mehr als doppelt so groß */
+  height: auto;
+  z-index: 4;
+  inset: 0;
+}
+
+img {
+  width: 400px;
+}
+
+.koi--deep {
+  z-index: 0;                              /* hinter dem großen Fisch */
+  opacity: 0.8;
+  filter: brightness(0.85) blur(0.8px);    /* wirkt tiefer im Wasser */
+}
