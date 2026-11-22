@@ -91,3 +91,191 @@ h3 {
   color: white;
   text-align: right;
 }
+
+/* ==========================================================
+   MOBILE & TABLET ONLY (iPhone / iPad). Desktop is unchanged.
+   Requires in <head>:
+   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+   ========================================================== */
+
+/* ---------- iPad (portrait & landscape) ---------- */
+@media (hover: none) and (pointer: coarse) and (min-width: 768px) and (max-width: 1100px) {
+  .container {
+    height: 80svh;
+    min-height: 560px;
+  }
+
+  h1 { font-size: clamp(80px, 12vw, 110px); }
+  h5 { font-size: 18px; }
+
+  h2 {
+    font-size: 26px;
+    letter-spacing: 6px;
+    padding-top: 40px;
+  }
+
+  h3 { padding: 0 24px; line-height: 1.4; }
+
+  .cities,
+  .articles {
+    padding: 0 24px;
+    box-sizing: border-box;
+  }
+
+  .city img,
+  .article img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+  }
+}
+
+/* ---------- iPhone ---------- */
+@media (hover: none) and (pointer: coarse) and (max-width: 767px) {
+
+  /* Hero */
+  .container {
+    height: 85svh;
+    min-height: 480px;
+    padding: 0 16px;
+    box-sizing: border-box;
+  }
+
+  h1 {
+    font-size: clamp(52px, 17vw, 80px);
+    letter-spacing: -1px;
+    line-height: 1;
+    margin: 0 0 8px;
+  }
+
+  h5 {
+    font-size: 16px;
+    margin: 0;
+  }
+
+  /* Koi pond: scale to the screen instead of a fixed 720x320 */
+  .pond,
+  .pond-path,
+  .koi {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .koi { height: auto; }
+
+  /* Headings */
+  h2 {
+    font-size: clamp(18px, 5.5vw, 24px);
+    letter-spacing: 4px;
+    padding: 36px 16px 4px;
+  }
+
+  h3 {
+    font-size: clamp(17px, 4.6vw, 21px);
+    line-height: 1.45;
+    padding: 0 20px;
+  }
+
+  /* Cities: horizontal swipe carousel */
+  .cities {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    gap: 14px;
+    padding: 20px 16px;
+    scrollbar-width: none;
+  }
+  .cities::-webkit-scrollbar { display: none; }
+
+  .cities .col-3 {
+    flex: 0 0 78%;
+    scroll-snap-align: center;
+    width: auto;
+    max-width: none;
+  }
+
+  /* Articles: single column */
+  .articles {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 16px;
+    box-sizing: border-box;
+  }
+
+  .articles .col-3 {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .city img,
+  .article img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: 12px;
+    display: block;
+  }
+
+  .article h3 {
+    font-size: 20px;
+    padding: 10px 4px 0;
+  }
+
+  /* Navigation */
+  .nav {
+    flex-wrap: wrap;
+    padding: 10px 16px;
+    gap: 6px;
+  }
+  .nav_logo { font-size: 18px; }
+  .left_side {
+    gap: 18px;
+    padding: 0;
+    margin: 0;
+  }
+  .nav__link {
+    padding: 10px 0;          /* bigger tap area */
+    display: inline-block;
+  }
+  .searchbar { display: none; }
+
+  /* Footer */
+  .footer {
+    padding-bottom: calc(24px + env(safe-area-inset-bottom));
+    text-align: center;
+  }
+  .footer__links {
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    padding: 0;
+  }
+
+  /* Smoother background on iOS (background-size: cover with fixed is buggy) */
+  .background-picture { background-attachment: scroll; }
+}
+
+/* ---------- Both iPhone & iPad ---------- */
+@media (hover: none) and (pointer: coarse) {
+  /* Stop iOS from auto-inflating text */
+  html { -webkit-text-size-adjust: 100%; }
+
+  /* Avoid sideways scrolling */
+  body { overflow-x: hidden; }
+
+  /* Notch / home-bar safe areas */
+  body {
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+  }
+
+  /* Snappier taps */
+  a, button { -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+}
+
+/* Optional: calmer experience if the user turned off animations */
+@media (prefers-reduced-motion: reduce) and (hover: none) {
+  .liquid-chrome__canvas { display: none; }
+}
