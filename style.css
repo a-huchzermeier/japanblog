@@ -292,3 +292,25 @@ h3 {
 @media (prefers-reduced-motion: reduce) and (hover: none) {
   .liquid-chrome__canvas { display: none; }
 }
+
+@media (hover: none) and (pointer: coarse) {
+
+  /* Logo kleiner */
+  .nav_logo { font-size: 15px; letter-spacing: 0.5px; }
+
+  /* Menü-Icon weiß */
+  .nav__toggle,
+  .nav__toggle i {
+    color: #fff !important;
+  }
+
+  /* "Places, people, ..." näher an die Städte */
+  .various-cities { margin: 0; padding-bottom: 0; }
+  .various-cities h3 { margin: 0; padding-bottom: 0; }
+  .cities { padding-top: 6px; padding-bottom: 8px; }
+
+  /* Abstand Städtenamen -> "- Articles -" -> Fotos */
+  .subheader { margin: 0; padding: 0; }
+  .subheader h2 { padding-top: 24px; padding-bottom: 0; }
+  .articles { padding-top: 10px; }
+}

@@ -20,7 +20,7 @@
         <button class="nav__toggle" aria-label="Menu" aria-expanded="false">
           <i class="fa-solid fa-bars"></i>
         </button>
-        
+
         <ul class = "left_side">
           <li><a class="nav__link" href="index.html">Home</a></li>
           <li><a class="nav__link" href="about.html">About</a></li>
@@ -57,6 +57,13 @@
             C -342.7 271.1, -320.9 227.2, -290 200
             C -242.9 158.5, -174.5 155.7, -110 160 Z"
           fill="none" stroke="none" />
+          <path id="route-mobile"
+            d="M 600 50
+              C 986.6 50, 1300 161.9, 1300 300
+              C 1300 438.1, 986.6 550, 600 550
+              C 213.4 550, -100 438.1, -100 300
+              C -100 161.9, 213.4 50, 600 50 Z"
+              fill="none" stroke="none" />
       </svg>
           <canvas class="koi" width="720" height="320"
           data-src="images/Koi_fish_dunkler.png"
@@ -70,6 +77,11 @@
     <script src="pond.js"></script>
     <script src="liquid-chrome.js"></script>
     <script src="music.js"></script>
+    <script>
+      if (window.matchMedia('(hover: none) and (pointer: coarse)').matches) {
+        document.querySelector('.koi').dataset.path = '#route-mobile';
+      }
+    </script>
     <script>
       const nav = document.querySelector('.nav');
       const toggle = document.querySelector('.nav__toggle');
