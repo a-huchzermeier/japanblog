@@ -313,6 +313,7 @@ h3 {
 
   /* Abstand Städtenamen -> "- Articles -" -> Fotos */
   .subheader { margin: 0; padding: 0; }
-  .subheader h2 { margin: 0; padding-top: 5px; padding-bottom: 0; }
+  .subheader h2 { margin: 0; padding-top: 0px; padding-bottom: 0; }
   .articles { padding-top: 10px; }
+  .cities { margin: 0}
 }
