@@ -309,11 +309,10 @@ h3 {
   /* "Places, people, ..." näher an die Städte */
   .various-cities { margin: 0; padding-bottom: 0; }
   .various-cities h3 { margin: 0; padding-bottom: 0; }
-  .cities { padding-top: 6px; padding-bottom: 8px; }
+  .cities { padding-top: 6px; padding-bottom: 8px; margin: 5px;}
 
   /* Abstand Städtenamen -> "- Articles -" -> Fotos */
   .subheader { margin: 0; padding: 0; }
   .subheader h2 { margin: 0; padding-top: 0px; padding-bottom: 0; }
   .articles { padding-top: 10px; }
-  .cities { margin: 0}
 }
